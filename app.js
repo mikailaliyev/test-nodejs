@@ -1,4 +1,7 @@
 const http = require("http");
+const { readFileSync, read } = require("fs");
+
+const errorPage = readFileSync("index.html", "utf8");
 
 http
   .createServer((req, res) => {
@@ -12,9 +15,7 @@ http
           About page
           </h1>`);
     } else {
-      res.end(`<h1 style='text-align: center; color: red'>
-          Ooops! No such page!
-          </h1>`);
+      res.end(errorPage);
     }
   })
   .listen(5000);
