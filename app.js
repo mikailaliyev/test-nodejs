@@ -1,7 +1,7 @@
 const http = require("http");
 const { readFileSync, read } = require("fs");
 
-const errorPage = readFileSync("./index.html", "utf8");
+const errorPage = readFileSync("./public/error.html", "utf8");
 const errorPageStyles = readFileSync("./styles.css");
 
 http
