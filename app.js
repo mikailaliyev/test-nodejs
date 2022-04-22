@@ -1,6 +1,7 @@
 const http = require("http");
 const { readFileSync, read } = require("fs");
 
+const homePage = readFileSync("./public/index.html");
 const errorPage = readFileSync("./public/error.html", "utf8");
 const errorPageStyles = readFileSync("./styles.css");
 
@@ -9,9 +10,9 @@ http
     const url = req.url;
     console.log(url);
     if (url === "/") {
-      res.end(`<h1 style='text-align: center; color: green'>
-          Hello NodeJS!
-          </h1>`);
+      res.writeHead(200, { "content-type": "text/html" });
+      res.write(homePage);
+      res.end();
     } else if (url === "/about") {
       res.end(`<h1 style='text-align: center; color: blue'>
           About page
