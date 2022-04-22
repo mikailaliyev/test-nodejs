@@ -3,7 +3,7 @@ const { readFileSync, read } = require("fs");
 
 const homePage = readFileSync("./public/index.html");
 const errorPage = readFileSync("./public/error.html", "utf8");
-const errorPageStyles = readFileSync("./styles.css");
+const errorPageStyles = readFileSync("./public/styles.css");
 
 http
   .createServer((req, res) => {
