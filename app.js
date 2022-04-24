@@ -2,6 +2,7 @@ const http = require("http");
 const { readFileSync, read } = require("fs");
 
 const homePage = readFileSync("./public/index.html");
+const aboutPage = readFileSync("./public/about.html");
 const errorPage = readFileSync("./public/error.html", "utf8");
 const errorPageStyles = readFileSync("./public/styles.css");
 const favicon = readFileSync("./public/favicon.png");
@@ -15,9 +16,9 @@ http
       res.write(homePage);
       res.end();
     } else if (url === "/about") {
-      res.end(`<h1 style='text-align: center; color: blue'>
-          About page
-          </h1>`);
+      res.writeHead(200, {'content-type': 'text/html'})
+      res.write(aboutPage)
+      res.end();
     } else if (url === "/favicon.png") {
       res.writeHead(200, { "content-type": "image/x-icon" });
       res.write(favicon);
